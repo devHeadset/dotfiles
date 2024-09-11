@@ -5,7 +5,6 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="fox"
 source $ZSH/oh-my-zsh.sh
 plugins=(git)
-export PATH=$PATH:/home/headset/.spicetify
 ############################################
 
 ## Aliases ##
@@ -13,5 +12,6 @@ export PATH=$PATH:/home/headset/.spicetify
 alias vim='nvim'
 alias neofetch='fastfetch'
 alias discord='vesktop'
+alias lg='lazygit'
 ##############################
 

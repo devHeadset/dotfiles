@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# Check if dunst is installed
+if ! command -v dunstify &> /dev/null
+then
+    echo "dunst is not installed. Please install dunst to use this script."
+    exit 1
+fi
+
+# Function to display ASCII art header
+function display_ascii_art() {
+    echo "======================================"
+    echo "         ___  ____ ___  __  __        "
+    echo "        |   \|  _ \_ _|  \/  |       "
+    echo "        | |) | |_) | || |\/| |        "
+    echo "        |___/|____/___|_|  |_|        "
+    echo "        ASCII CLI Reminder v1.0       "
+    echo "======================================"
+}
+
+# Function to run reminder in the background
+function set_reminder() {
+    local time=$1
+    local message=$2
+
+    # Convert time to seconds
+    TIME_SECONDS=$(echo $time | sed 's/m/*60/;s/h/*3600/;s/s/*1/' | bc)
+
+    # Wait for the specified amount of time
+    sleep $TIME_SECONDS
+
+    # Send notification using dunst
+    dunstify "Reminder" "$message" -t 10000  # Notification will last for 10 seconds
+
+    # Confirmation after sending notification
+    echo "======================================"
+    echo "Reminder sent: \"$message\""
+    echo "======================================"
+}
+
+# Display ASCII Art Header
+display_ascii_art
+
+# Prompt for the time to set the reminder
+echo "How long until the reminder? (e.g., 5m, 30s, 1h)"
+echo "======================================"
+read -p "Enter time: " TIME
+
+# Validate time input
+if [[ ! $TIME =~ ^[0-9]+[smh]$ ]]; then
+    echo "Invalid time format. Use something like 5m for 5 minutes, 30s for 30 seconds, or 1h for 1 hour."
+    exit 1
+fi
+
+# Prompt for the reminder message
+echo "======================================"
+echo "What should the reminder say?"
+echo "======================================"
+read -p "Enter your reminder message: " MESSAGE
+
+# Confirm the reminder details with ASCII art style
+echo "======================================"
+echo "Reminder is set!"
+echo "In $TIME, you will be reminded to:"
+echo "--------------------------------------"
+echo "       \"$MESSAGE\""
+echo "======================================"
+
+# Run the reminder in the background and disown it
+(set_reminder "$TIME" "$MESSAGE" & disown)
+
+echo "Reminder has been set and will run in the background. You can now close this terminal."
+

@@ -1,0 +1,100 @@
+# vim:fileencoding=utf-8:ft=conf
+
+# Font family. You can also specify different fonts for the
+# bold/italic/bold-italic variants.
+font_family      JetBrainsMono Nerd Font
+bold_font        JetBrainsMono Nerd Font Bold
+italic_font      JetBrainsMono Nerd Font Italic
+bold_italic_font JetBrainsMono Nerd Font Bold Italic
+
+# Font size (in pts)
+font_size        15.0
+
+# Transparency
+background_opacity         0.7
+dynamic_background_opacity yes
+
+# Cursor settings
+shell_integration no-cursor
+cursor_shape block
+cursor_blink_interval     0.5
+cursor_stop_blinking_after 15.0
+
+# Scrolling and mouse behavior
+scrollback_lines 2000
+scrollback_pager less +G -R
+wheel_scroll_multiplier 5.0
+click_interval 0.5
+select_by_word_characters :@-./_~?&=%+#
+mouse_hide_wait 0.0
+
+# Layout settings
+enabled_layouts *
+remember_window_size   yes
+initial_window_width   640
+initial_window_height  400
+
+# Performance tweaks
+repaint_delay    10
+input_delay 3
+visual_bell_duration 0.0
+enable_audio_bell yes
+
+# URL handling
+open_url_modifiers ctrl
+open_url_with default
+
+# Terminal settings
+term xterm-kitty
+window_border_width 0
+window_margin_width 15
+
+# Key mappings
+map super+v             paste_from_clipboard
+map ctrl+shift+s        paste_from_selection
+map super+c             copy_to_clipboard
+map shift+insert        paste_from_selection
+map ctrl+shift+up       scroll_line_up
+map ctrl+shift+down     scroll_line_down
+map ctrl+shift+k        scroll_line_up
+map ctrl+shift+j        scroll_line_down
+map ctrl+shift+page_up  scroll_page_up
+map ctrl+shift+page_down scroll_page_down
+map ctrl+shift+home     scroll_home
+map ctrl+shift+end      scroll_end
+map ctrl+shift+h        show_scrollback
+
+# Window management mappings
+map super+n             new_os_window
+map super+w             close_window
+map ctrl+shift+enter    new_window
+map ctrl+shift+]        next_window
+map ctrl+shift+[        previous_window
+map ctrl+shift+f        move_window_forward
+map ctrl+shift+b        move_window_backward
+
+# Tab management mappings
+map ctrl+shift+right    next_tab
+map ctrl+shift+left     previous_tab
+map ctrl+shift+t        new_tab
+map ctrl+shift+q        close_tab
+map ctrl+shift+l        next_layout
+map ctrl+shift+.        move_tab_forward
+map ctrl+shift+,        move_tab_backward
+
+# Font size adjustments
+map ctrl+shift+up      increase_font_size
+map ctrl+shift+down    decrease_font_size
+map ctrl+shift+backspace restore_font_size
+
+# Window decorations and macOS settings
+hide_window_decorations titlebar-only
+macos_option_as_alt no
+allow_remote_control yes
+
+# Pywal compatibility
+# This includes the Pywal-generated colors from ~/.cache/wal/colors-kitty.conf
+include ~/.cache/wal/colors-kitty.conf
+
+# END CONFIG
+

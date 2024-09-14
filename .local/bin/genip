@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# Fetch the public IP address
-public_ip=$(curl -s ifconfig.me)
-
-# Output the IP address
-echo "$public_ip"
-

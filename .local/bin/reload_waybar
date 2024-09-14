@@ -1,5 +1,0 @@
-# Reload polybar
-
-pkill waybar
-waybar &
-

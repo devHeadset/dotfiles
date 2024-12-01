@@ -1,4 +1,5 @@
 * Gentoo dotfiles
 I used to use Arch, and NixOS, but I have switched to Gentoo for the foreseeable future.
 
+[[file:./Assets/screenshot.png]]
 (Made in GNU/Emacs BTW)

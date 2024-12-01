@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# get the screenshots directory
+SCREENSHOT_DIR=$HOME/screenshots
+mkdir -p "$SCREENSHOT_DIR"
+
+# generate a timestamp for the screenshot filename
+TIMESTAMP=$(date +'%Y-%m-%d_%H-%M-%S')
+
+# full path to the output file
+OUTPUT_FILE="$SCREENSHOT_DIR/screenshot_$TIMESTAMP.png"
+
+# function to take a screenshot of the entire screen
+take_full_screenshot() {
+    grim "$OUTPUT_FILE"
+    if [ $? -eq 0 ]; then
+        echo "full screenshot saved to $OUTPUT_FILE"
+        notify-send "screenshot tool" "full screenshot saved to $OUTPUT_FILE"
+    else
+        echo "failed to take a full screenshot."
+        notify-send "screenshot tool" "failed to take a full screenshot." -u critical
+    fi
+}
+
+# function to take a screenshot of a selected region
+take_region_screenshot() {
+    REGION=$(slurp)
+    if [ -n "$REGION" ]; then
+        grim -g "$REGION" "$OUTPUT_FILE"
+        if [ $? -eq 0 ]; then
+            echo "region screenshot saved to $OUTPUT_FILE"
+            notify-send "bash shot" "region screenshot saved to $OUTPUT_FILE"
+        else
+            echo "failed to take a region screenshot."
+            notify-send "bash shot" "failed to take a region screenshot." -u critical
+        fi
+    else
+        echo "no region selected. screenshot canceled."
+        notify-send "bash shot" "no region selected. screenshot canceled." -u low
+    fi
+}
+
+# display usage instructions
+show_help() {
+    echo "usage: $0 [full|region]"
+    echo "  full   - take a screenshot of the entire screen"
+    echo "  region - take a screenshot of a selected region"
+    exit 1
+}
+
+# parse command-line arguments
+if [ "$#" -ne 1 ]; then
+    show_help
+fi
+
+case "$1" in
+    full)
+        take_full_screenshot
+        ;;
+    region)
+        take_region_screenshot
+        ;;
+    *)
+        show_help
+        ;;
+esac

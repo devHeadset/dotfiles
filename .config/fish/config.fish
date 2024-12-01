@@ -1,12 +1,12 @@
 set -e fish_user_paths
-set -U fish_user_paths $HOME/.bin  $HOME/.local/bin
+set -U fish_user_paths  $HOME/.local/bin
 
 set fish_greeting                                 # Supresses fish's intro message
 set TERM "xterm-256color"                         # Sets the terminal type
 set EDITOR "emacsclient -t -a ''"                 # $EDITOR use Emacs in terminal
 set VISUAL "emacsclient -c -a emacs"              # $VISUAL use Emacs in GUI mode
 
-set -x MANPAGER "nvim +Man!"
+set -x MANPAGER "less +Man!"
 
 fish_vi_key_bindings
 

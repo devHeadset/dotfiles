@@ -1,0 +1,8 @@
+configuration {
+	font: "JetBrainsMono Nerd font 12";
+	show-icons: true;
+	terminal: "kitty";
+	drun-url-launcher: "xdg-open";
+        drun-display-format: "{icon} {name}";
+}
+@theme "~/.config/rofi/mocha.rasi"

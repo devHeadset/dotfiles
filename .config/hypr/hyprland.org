@@ -1,14 +1,43 @@
+#+TITLE: Hyprland Config
+#+PROPERTY: header-args :tangle hyprland.conf
+
+
+
+:toc:
+
+* Source
+#+begin_src conf
+
 source = monitors.conf
 source = mocha.conf
 
+#+end_src
+* Programs
+
+#+begin_src conf
 # Set programs that you use
 $terminal = kitty
 $menu = rofi -show drun
+#+end_src
+* Autostart
+ Autostart necessary processes (like notifications daemons, status bars, etc.)
+ Or execute your favorite apps at launch like this:
+ #+begin_src conf
 
 exec-once = waybar
 
+ #+end_src
+* Env varibles
+ See https://wiki.hyprland.org/Configuring/Environment-variables/
+ #+begin_src conf
+
 env = XCURSOR_SIZE,24
 env = HYPRCURSOR_SIZE,24
+#+end_src
+
+* Look and Feel
+ Refer to https://wiki.hyprland.org/Configuring/Variables/
+ #+begin_src conf
 
 general { 
     gaps_in = 5
@@ -82,6 +111,10 @@ misc {
     force_default_wallpaper = -1 # Set to 0 or 1 to disable the anime mascot wallpapers
     disable_hyprland_logo = false # If true disables the random hyprland logo / anime girl background. :(
 }
+#+end_src
+* Input
+ Refer to https://wiki.hyprland.org/Configuring/Variables/#input
+ #+begin_src conf
 
 input {
     kb_layout = us
@@ -110,6 +143,12 @@ device {
     name = epic-mouse-v1
     sensitivity = -0.5
 }
+#+end_src
+
+* Keybinds
+ See https://wiki.hyprland.org/Configuring/Keywords/
+
+ #+begin_src conf
 
 $mainMod = SUPER # Sets "Windows" key as main modifier
 
@@ -166,3 +205,5 @@ bindm = $mainMod, mouse:273, resizewindow
 
 
 windowrulev2 = suppressevent maximize, class:.* # You'll probably like this.
+
+#+end_src

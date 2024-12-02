@@ -3,7 +3,14 @@
 
 
 
-:toc:
+* TOC :toc:
+- [[#source][Source]]
+- [[#programs][Programs]]
+- [[#autostart][Autostart]]
+- [[#env-varibles][Env varibles]]
+- [[#look-and-feel][Look and Feel]]
+- [[#input][Input]]
+- [[#keybinds][Keybinds]]
 
 * Source
 #+begin_src conf
